@@ -1,8 +1,8 @@
 const  HtmlWebpackPlugin = require('html-webpack-plugin');
-const path =  require('path');
+const path = require('path');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
 
 module.exports = {
@@ -12,8 +12,8 @@ module.exports = {
 
     output: {
         path: path.join(__dirname, 'dist'),
-        filename:  'index.[contenthash].js',
-        assetModuleFilename: path.join('images', '[name].[contenthash][ext]'),
+        filename:  'index.[contenthash:8].js',
+        // assetModuleFilename: path.join('images', '[name].[contenthash][ext]'),
     },
 
     module: {
@@ -56,14 +56,22 @@ module.exports = {
                 loader: "html-loader",
             },
             {
-                test: /\.(png|jpg|jpeg|gif)$/i,
+                test: /\.(png|jpg|jpeg|gif)$/i,               
                 type: 'asset/resource',
+                generator: {
+                    // filename: path.join('images', '[name].[contenthash][ext]'),
+                    // filename: 'images/[name][contenthash:8][ext]',
+                    filename: 'images/[name][ext]',
+
+                },
             },
             {
                 test: /\.svg$/,
+                use: 'svgo-loader',
                 type: 'asset/resource',
                 generator: {
-                    filename: path.join('icons', '[name].[contenthash][ext]'),
+                    //   filename: path.join('icons', '[name].[contenthash:8][ext]'),
+                    filename: 'icons/[contenthash:8][ext]',
                 },
             },
            
@@ -81,7 +89,7 @@ module.exports = {
             filename: 'index.html',
         }),
         new FileManagerPlugin({
-            events:{
+            events: {
                 onStart: {
                     delete: ['dist'],
                 },

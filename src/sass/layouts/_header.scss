@@ -1,0 +1,22 @@
+.header {
+    background-color: $color-background-dark;
+}
+
+.header__wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 0;
+}
+
+.header__logo {
+    margin-left: 2rem;
+}
+
+.header__content {
+    display: flex;
+    align-items: center;
+}
+
+.header__profile {
+    padding: 0 2rem 0 4rem;
+}

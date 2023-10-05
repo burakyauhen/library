@@ -1,0 +1,27 @@
+.menu__header {
+    color: $color-active;
+    &_right-even {
+       @extend %text-right-even;
+    }
+}
+
+.menu__item {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 4rem;
+}
+
+.menu__name {
+    @include font($size: 2rem, $height: 4rem, $spacing: 0.2rem, $transform: capitalize);
+    &_right-even {
+        @extend %text-right-even;
+    }
+}
+
+.menu__price {
+    @extend %font-add;
+    @include font ($size: 2rem, $height: 4rem, $spacing: 0.2rem, $transform: capitalize);
+    &:before {
+        @extend %pseudo-dash;
+    }
+}

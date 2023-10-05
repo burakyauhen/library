@@ -1,0 +1,48 @@
+.library-card {
+    background-color: $color-light;
+}
+
+.library-card__wrapper {
+    padding: 2rem 2rem 4rem;
+}
+
+.library-card__header {
+    text-align: center;
+    padding-bottom: 4rem;
+    &::after {
+       @extend %pseudo-header-underscore; 
+    }
+}
+
+.library-card__content {
+    display: flex;
+    justify-content: space-between;
+}
+.library-card__checker-name {
+    @include font($size: 3rem, $height: normal, $spacing: 0.06rem);
+    text-align: center;
+    padding-bottom: 3rem;
+}
+
+.library-card__registry-name {
+    @extend %font-add;
+    @include font($size: 3rem, $height: normal, $spacing: 0.06rem);
+    text-align: right;
+    margin-bottom: 3.5rem;
+}
+
+.library-card__registry-description {
+    @include font($size: 2rem, $height: 4rem, $spacing: 0.04rem);
+    max-width: 45.6rem;
+    text-align: right;
+    margin-bottom: 2.7rem;
+}
+
+.library-card__buttons {
+    text-align: right;
+}
+
+.card-registry__sign-up {
+    margin-right: 1.5rem;
+}
+

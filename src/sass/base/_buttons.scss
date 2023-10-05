@@ -1,0 +1,47 @@
+.button {
+    @include font($size: 1rem, $height: normal, $weight: 700, $spacing: 0.1rem);
+    @extend %transition;
+    cursor: pointer;
+    padding: 0.85rem 2.5rem;
+    background-color: inherit;
+    border: 1px solid $color-text;
+    color: $color-background-dark;
+    &:hover {
+        @extend %button-active;
+    }
+    &_disabled {
+        background-color: $color-light;
+        border: 1px solid $color-active;
+        color: $color-active;
+        &:hover {
+            background-color: $color-light ;
+            border: 1px solid $color-active;
+        }
+    }
+}
+
+.button-form {
+    @include font($size: 2rem, $height: normal, $weight: 700, $spacing: 0.1rem);
+    @extend %transition;
+    cursor: pointer;
+    padding: 1rem 4rem;
+    background-color: inherit;
+    border: 1px solid $color-background-dark;
+    color: $color-background-dark;
+    &:hover {
+        @extend %button-active;
+    }
+}
+
+.button-registration {
+    @include font($size: 1rem, $height: normal, $weight: 700, $spacing: 0.1rem);
+    @extend %transition;
+    cursor: pointer;
+    padding: 0.85rem 1.7rem;
+    background-color: inherit;
+    border: 1px solid $color-text;
+    color: $color-background-dark;
+    &:hover {
+        @extend %button-active;
+    }
+}

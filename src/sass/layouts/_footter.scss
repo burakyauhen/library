@@ -1,0 +1,60 @@
+.footter {
+    background-color: $color-background-dark;
+}
+
+.footter-wrapper {
+    padding: 2rem 2rem 4.4rem;
+}
+
+.footter__feed-back {
+    @include font($size: 1.5rem, $height: 2rem);
+    margin-bottom: 2.8rem;
+    color: $color-light;
+}
+
+.footter__address {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.1rem;
+}
+
+.footter__location a {
+    text-decoration: none;
+    color: $color-light;
+}
+
+.footer__location-time {
+    text-align: right;
+}
+
+.footter__social-media {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footter__media {
+    margin-top: 0.7rem;
+}
+
+.footer__media-time {
+    text-align: right;
+}
+
+.footer__underscore {
+    border-bottom: 0.1rem solid $color-light;
+    margin-bottom: 4.5rem;
+}
+
+.footter__manufacture {
+    display: flex;
+    justify-content: space-between;
+    @include font($size: 2rem, $spacing: 0.2rem);
+    color: $color-light
+}
+
+.footter__link {
+    cursor: pointer;
+    text-decoration: none;
+    color: $color-light;
+}
+

@@ -1,0 +1,47 @@
+html {
+    font-size: 10px;
+    color: $color-text;
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    @extend %font-prim;
+    @include font($size: 2rem, $height: 4rem);
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+}
+
+h1 {
+    @extend %font-add;
+    @include font($size: 3rem, $height: 5rem, $spacing: 0.6rem);
+}
+
+h2 {
+    @extend %font-add;
+    @include font($size: 4rem, $spacing: 0.2rem);
+}
+
+h3 {
+    @extend %font-add;
+    @include font($size: 4rem, $height: 5rem, $spacing: 0.3rem, $transform: uppercase);
+}
+
+h4 {
+    @include font($size: 1.5rem, $height: 4rem, $weight: 700, $spacing: 0.2rem, $transform: uppercase);
+}

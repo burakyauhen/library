@@ -1,0 +1,24 @@
+.favorites {
+    background-color: $color-light;
+}
+
+.favorites__wrapper {
+    padding: 2rem 2rem 4rem;
+}
+
+.favorites__header {
+    text-align: center;
+    padding-bottom: 3.2rem;
+    &:after {
+        @extend %pseudo-header-underscore;
+    }
+}
+
+.favorites__form {
+    margin-bottom: 3.2rem;
+}
+
+
+
+
+

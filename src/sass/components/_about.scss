@@ -1,0 +1,44 @@
+.about {
+    background-color: $color-light;
+}
+
+.about__wrapper {
+    padding: 2rem 2rem 3.5rem;
+}
+
+.about__header {
+    text-align: center;
+    &:after {
+        @extend %pseudo-header-underscore;
+    }
+}
+
+.about__descrioption {
+    padding: 4rem 0 2rem;
+    text-align: center;
+}
+
+.about__gallery {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3.5rem;
+}
+
+.about__signs {
+    display: flex;
+    justify-content: center;
+}
+
+.about__circle {
+    display: block;
+    cursor: pointer;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 1.6rem;
+    background-color: $color-background-dark;
+    font-size: 1px;
+    border: 0.5rem solid $color-light;
+    &_active {
+        background-color: $color-active
+    }
+}

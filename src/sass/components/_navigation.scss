@@ -1,0 +1,16 @@
+.navigation {
+    display: flex;
+}
+
+.navigation__item {
+    padding-left : 3rem;
+    list-style: none;
+    &:first-child {
+        padding-left: 0;
+    }
+}
+
+.navigation__link {
+    text-decoration: none;
+    color: $color-light;
+}

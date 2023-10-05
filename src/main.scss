@@ -1,19 +1,35 @@
-$font-size: 1rem;
-$font-color: lch(28 99 35);
-
-html {
-  font-family: Forum;
-  font-size: $font-size;
-  color: $font-color;
-}
-
-.logo1 {
-    width: 10em;
-  }
+@import "../node_modules/normalize-scss/sass/normalize";
 
 
-  .logo2 {
-    width: 10em;
-  }
+//Abstract
+@import "./sass/abstract/constants";
+@import "./sass/abstract/mixins";
+@import "./sass/abstract/placeholders";
 
-  
+
+
+//Base
+@import "./sass/base/base";
+@import "./sass/base/icons";
+@import "./sass/base/logo";
+@import "./sass/base/forms";
+@import "./sass/base/books";
+@import "./sass/base/buttons";
+
+
+//Layouts
+@import "./sass/layouts/header";
+@import "./sass/layouts/wrapper";
+
+
+//Components
+@import "./sass/components/navigation";
+@import "./sass/components/welcome";
+@import "./sass/components/about";
+@import "./sass/components/favorites";
+@import "./sass/components/coffee-shop";
+@import "./sass/components/menu";
+@import "./sass/components/contacts";
+@import "./sass/components/library-card";
+@import "./sass/layouts/footter";
+@import "./sass/components/media";

@@ -1,0 +1,23 @@
+.welcome {
+    background-color: $color-background-dark;
+}
+
+.welcome__wrapper {
+    background-image: url('./img/background/welcome.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 22rem;
+    height: 60rem;
+}
+
+.welcome__content {
+    background-color: $color-background-dark;
+    max-width: 60rem;
+    padding: 3.5rem 4rem;
+}
+
+.welcome__header {
+    color: $color-light;
+    text-align: center;
+}
+

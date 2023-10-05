@@ -1,0 +1,46 @@
+%font-prim {
+    font-family: 'Inter', Verdana, sans-serif;
+}
+
+%font-add {
+    font-family: 'Forum', Verdana, sans-serif;
+}
+
+%pseudo-header-underscore {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    padding-top: 2rem;
+    border-bottom: 1px solid $color-background-dark;
+    width: 5rem;
+}
+
+%pseudo-staff-underscore {
+    content: "";
+    display: block;
+    width: 6rem;
+    border-bottom: 1px solid $color-active;
+}
+
+%pseudo-dash {
+    content: "";
+    display: inline-block;
+    width: 10rem;
+    margin: 0 6rem 0.6rem 6rem;
+    border-bottom: 1px solid $color-active;  
+}
+
+%text-right-even {
+    flex-grow: 1;
+    text-align: right;
+}
+
+%button-active {
+    border-color: transparent;
+    background-color: $color-active;
+}
+
+%transition {
+    transition: all 0.3s ease-out;
+}
+

@@ -1,0 +1,15 @@
+.media__item {
+    list-style: none;
+}
+
+.media__item {
+    display: inline-block;
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-left: 1.1rem;
+    &:first-child {
+        margin-left: 0;
+    }
+}
+
+

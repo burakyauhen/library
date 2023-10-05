@@ -1,0 +1,21 @@
+.ico {
+    cursor: pointer;
+    display: inline-block;
+}
+
+.ico-profile {
+    @include ico($url: url("./img/icons/icon_profile.svg"), $size: contain, $width: 2.8rem);
+    vertical-align: middle;
+}
+
+.ico-twitter {
+    @include ico($url: url("./img/icons/twitter.svg"), $size: contain, $width: 2.4rem);
+}
+
+.ico-instagram {
+    @include ico($url: url('./img/icons/instagram.svg'), $size: contain, $width: 2.4rem);
+}
+
+.ico-facebook {
+    @include ico($url: url('./img/icons/facebook.svg'), $size: contain, $width: 2.4rem);
+}
