@@ -1,3 +1,15 @@
+.menu {
+    @include media-laptop {
+        &:first-child {
+            align-self: flex-start;
+            margin-bottom: 4rem;
+        }
+        &:last-child {
+            align-self: flex-end;
+        }
+    }
+}
+
 .menu__header {
     color: $color-active;
     &_right-even {
@@ -9,12 +21,19 @@
     display: flex;
     justify-content: space-between;
     padding-top: 4rem;
+
+    @include media-tablet {
+        padding-top: 1rem;
+    }
 }
 
 .menu__name {
     @include font($size: 2rem, $height: 4rem, $spacing: 0.2rem, $transform: capitalize);
     &_right-even {
         @extend %text-right-even;
+    }
+    @include media-tablet {
+        @include font($size: 1.2rem, $height: 3rem, $spacing: 0.2rem, $transform: capitalize);
     }
 }
 
@@ -23,5 +42,8 @@
     @include font ($size: 2rem, $height: 4rem, $spacing: 0.2rem, $transform: capitalize);
     &:before {
         @extend %pseudo-dash;
+    }
+    @include media-tablet {
+        @include font ($size: 1.2rem, $height: 3rem, $spacing: 0.2rem, $transform: capitalize);
     }
 }

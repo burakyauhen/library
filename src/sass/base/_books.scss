@@ -4,6 +4,10 @@
     justify-content: space-between;
     row-gap: 4rem;
     padding-right: 4rem;
+    @include media-desktop-small {
+        grid-template-columns: repeat(1, minmax(30rem, 55rem));
+        justify-content: center;
+    }
 }
 
 .book-content {
@@ -25,6 +29,9 @@
 .book-content__author {
     @include font($size: 1.5rem, $height: 4rem, $weight: 700, $spacing: 0.2rem, $transform: capitalize);
     padding-bottom: 2rem;
+    @include media-tablet {
+        @include font($size: 1.2rem, $height: 2rem, $weight: 700, $spacing: 0.2rem, $transform: capitalize);  
+    }
 }
 
 .book-content__description {
@@ -32,10 +39,16 @@
     max-width: 35.7rem;
     height: 32.7rem;
     overflow-x: hidden;
+    @include media-tablet {
+        @include font($size: 1.2rem, $height: 2rem, $spacing: 0.2rem, $transform: capitalize);
+    }
 }
 
 .book-content__image {
     position: absolute;
     bottom: -0.1rem;
-    right: -4.1rem
+    right: -4.1rem;
+    @include media-tablet {
+        width: 13rem;
+    }
 }

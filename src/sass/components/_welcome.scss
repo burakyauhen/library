@@ -8,6 +8,9 @@
     background-repeat: no-repeat;
     padding-top: 22rem;
     height: 60rem;
+    @include media-laptop {
+        background-image: url('./img/background/welcome-laptop.svg');
+    }
 }
 
 .welcome__content {
@@ -20,4 +23,3 @@
     color: $color-light;
     text-align: center;
 }
-

@@ -3,19 +3,30 @@
 .seasons-form__description {
     display: block;
     font-weight: 700;
+    margin-bottom: 2.4rem;
+}
+
+.seasons-form__season {
+    display: inline-flex;
+    gap: 2rem;
+    margin-right: 8.5rem;
+    justify-content: space-between;
+    align-items: center;
+    &:last-child{
+        margin-right: 0;
+    }
 }
 
 .seasons-form__input {
     cursor: pointer;
     accent-color: black;
-    margin: 3.4rem 1.8rem 0 0;
+    margin: 0;
     width: 1.7rem;
     height: 1.7rem;
 }
 
 .seasons-form__label {
     cursor: pointer;
-    padding-right: 8.6rem;
     margin: 0;
     &_active {
         font-weight: 700;
@@ -28,18 +39,19 @@
     padding: 1.7rem 1.7rem 2.7rem;
     border: 0.3rem solid $color-active;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-
 }
 
 .check-form__date {
     background-color: $color-active;
     padding: 2rem 2rem 2.5rem;
     margin-bottom: 2rem;
-
     & p:first-of-type {
         @extend %font-add;
         @include font($size: 3rem, $height: 5rem, $spacing: 0.06rem);
         padding-bottom: 2rem;
+        @include media-tablet {
+            @include font($size: 2rem, $height: 3rem, $spacing: 0);
+        }
     }
 }
 
@@ -47,13 +59,16 @@
     @extend %font-add;
     @include font($size: 3rem, $height: 5rem, $spacing: 0.06rem);
     display: block;
-    width: 52rem;
+    width: 100%;
     padding: 0.8rem 2rem;
     border-radius: 1rem;
     border: none;
     margin-bottom: 2.5rem;
     &:last-child {
         margin-bottom: 0;
+    }
+    @include media-tablet {
+        @include font($size: 2rem, $height: 3rem, $spacing: 0.06rem);
     }
 }
 

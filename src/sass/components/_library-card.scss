@@ -17,18 +17,49 @@
 .library-card__content {
     display: flex;
     justify-content: space-between;
+    gap: 2rem;
+    @include media-laptop {
+        flex-direction: column;
+        align-items: center;
+    }
 }
+
+.library-card__checker {
+    max-width: 60rem;
+    flex-grow: 1;
+    @include media-laptop {
+        width: 100%;
+    }
+}
+
 .library-card__checker-name {
     @include font($size: 3rem, $height: normal, $spacing: 0.06rem);
     text-align: center;
     padding-bottom: 3rem;
+    @include media-tablet {
+        @include font($size: 2rem, $height: normal, $spacing: 0.06rem);
+    }
+}
+
+.library-card__registry {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    @include media-laptop {
+        align-items: center;
+    }
 }
 
 .library-card__registry-name {
     @extend %font-add;
     @include font($size: 3rem, $height: normal, $spacing: 0.06rem);
-    text-align: right;
     margin-bottom: 3.5rem;
+    @include media-laptop {
+        margin-bottom: 4rem;
+    }
+    @include media-tablet {
+        @include font($size: 2rem, $height: normal, $spacing: 0.06rem);
+    }
 }
 
 .library-card__registry-description {
@@ -36,10 +67,18 @@
     max-width: 45.6rem;
     text-align: right;
     margin-bottom: 2.7rem;
+    @include media-laptop {
+        max-width: 60rem;
+        text-align: center;
+        margin-bottom: 3.2rem;
+    }
+    @include media-tablet {
+        @include font($size: 1.2rem, $height: 2rem, $spacing: 0.04rem);
+    }
 }
 
 .library-card__buttons {
-    text-align: right;
+    // text-align: right;
 }
 
 .card-registry__sign-up {

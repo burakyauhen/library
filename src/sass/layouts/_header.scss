@@ -10,11 +10,18 @@
 
 .header__logo {
     margin-left: 2rem;
+    color: $color-light;
 }
 
 .header__content {
     display: flex;
     align-items: center;
+}
+
+.header__navigation {
+    @include media-laptop {
+       display: none; 
+    }
 }
 
 .header__profile {
