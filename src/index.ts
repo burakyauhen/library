@@ -1,16 +1,17 @@
 import './main.scss';
-import { burgerAddClickHandler, makeHeaderNavigationInactive, crossToBurger } from './ts/Burger';
+import { Burger } from './ts/Burger';
 
 
 window.onload = function() {
     console.log('page has been load');
 
-    burgerAddClickHandler();
-    bodyAddClickHandler();
+    const burger = new Burger();
+    burger.burgerAddClickHandler();
+    bodyAddClickHandler(burger);
 }
 
 
-const bodyAddClickHandler = () => {
+const bodyAddClickHandler = (burger: Burger) => {
     const navigation = document.querySelector('.header__navigation') as HTMLElement;
     (document.querySelector('body') as HTMLBodyElement).addEventListener('click', (event) => {
         if ( 
@@ -18,8 +19,9 @@ const bodyAddClickHandler = () => {
             navigation.classList.contains('header__navigation_active')) || 
             (event.target as HTMLElement).closest('.navigation__item'))
         {
-            makeHeaderNavigationInactive(); 
-            crossToBurger();
+            burger.makeHeaderNavigationInactive(); 
+            burger.crossToBurger();
         }
     });
 }
+
