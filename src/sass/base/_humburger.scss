@@ -1,10 +1,12 @@
 %hamburger-line {
+    @extend %transition;
     content: "";
     display: inline-block;
     position: absolute;
     background-color: $color-light;
     width: 100%;
     height: 2px;
+    left: 0;
 }
 
 .header__hamburger {
@@ -16,20 +18,30 @@
     @include media-laptop {
         display: inline-block;
     }
-    &:before {
-        @extend %hamburger-line;
-        top: 0;
-        left: 0;
-    }
-    &:after {
-        @extend %hamburger-line;
-        bottom: 0;
-        left: 0;
+}
+
+.hamburger__first {
+    @extend %hamburger-line;
+    top: 0px;
+    &_active {
+        rotate: 45deg;
+        top: 10px;
     }
 }
 
-.hamburger__line {
+.hamburger__second {
     @extend %hamburger-line;
     top: calc( 50% - 1.5px );
-    left: 0;
+    &_active { 
+        display: none;
+    }
+}
+
+.hamburger__third {
+    @extend %hamburger-line;
+    bottom: 0;
+    &_active {
+        rotate: -45deg;
+        bottom: 10px;
+    }
 }

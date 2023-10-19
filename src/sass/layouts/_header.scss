@@ -14,16 +14,27 @@
 }
 
 .header__content {
+    position: relative;
     display: flex;
     align-items: center;
 }
 
 .header__navigation {
+    @extend %transition;
     @include media-laptop {
-       display: none; 
+    position: absolute;
+    width: 33.2rem;
+    height: 57rem;
+    top: 0;
+    right: -90rem;
+    background-color: $color-background-dark;
+    &_active {
+        right: 0;
+    }
     }
 }
 
 .header__profile {
     padding: 0 2rem 0 4rem;
+    z-index: 1;
 }
