@@ -1,5 +1,6 @@
 import './main.scss';
 import { Burger } from './ts/Burger';
+import { AboutSlider } from './ts/AboutSlider';
 
 
 window.onload = function() {
@@ -7,9 +8,17 @@ window.onload = function() {
 
     const burger = new Burger();
     burger.burgerAddClickHandler();
-    bodyAddClickHandler(burger);
-}
 
+    const aboutSlider = new AboutSlider();
+    aboutSlider.implementSlider();
+
+    bodyAddClickHandler(burger);
+
+    window.addEventListener('resize', () => {
+        aboutSlider.reloadSlider();
+    });
+    
+}
 
 const bodyAddClickHandler = (burger: Burger) => {
     const navigation = document.querySelector('.header__navigation') as HTMLElement;
@@ -24,4 +33,3 @@ const bodyAddClickHandler = (burger: Burger) => {
         }
     });
 }
-

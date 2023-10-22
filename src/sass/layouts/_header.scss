@@ -14,7 +14,6 @@
 }
 
 .header__content {
-    position: relative;
     display: flex;
     align-items: center;
 }
@@ -22,15 +21,15 @@
 .header__navigation {
     @extend %transition;
     @include media-laptop {
-    position: absolute;
-    width: 33.2rem;
-    height: 57rem;
-    top: 0;
-    right: -90rem;
-    background-color: $color-background-dark;
-    &_active {
-        right: 0;
-    }
+        position: fixed;
+        width: 33.2rem;
+        height: 57rem;
+        top: 0;
+        right: -90rem;
+        background-color: $color-background-dark;
+        &_active {
+            right: 0;
+        }
     }
 }
 
