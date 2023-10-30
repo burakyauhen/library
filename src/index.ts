@@ -1,23 +1,32 @@
 import './main.scss';
 import { Burger } from './ts/Burger';
 import { AboutSlider } from './ts/AboutSlider';
+import { FavoriteSlider } from './ts/FavoritesSlider';
+
 
 
 window.onload = function() {
-    console.log('page has been load');
+    console.log('page has been loaded');
 
+    //burger
     const burger = new Burger();
     burger.burgerAddClickHandler();
+    bodyAddClickHandler(burger);
 
+    //about Slider
     const aboutSlider = new AboutSlider();
     aboutSlider.implementSlider();
-
-    bodyAddClickHandler(burger);
 
     window.addEventListener('resize', () => {
         aboutSlider.reloadSlider();
     });
-    
+
+    //favorites Slider
+    const favoriteSlider = new FavoriteSlider();
+    favoriteSlider.implementSlider();
+
+
+
 }
 
 const bodyAddClickHandler = (burger: Burger) => {

@@ -21,7 +21,7 @@ class Burger {
         navigation.classList.add('header__navigation_active');
     }
     
-    private makeHeaderNavigationInactive: classChanger = () =>  {
+    public makeHeaderNavigationInactive: classChanger = () =>  {
         const navigation = document.querySelector('.header__navigation') as HTMLElement;
         navigation.classList.remove('header__navigation_active');
     }
@@ -32,7 +32,7 @@ class Burger {
         ((document.querySelector('.hamburger__third')) as HTMLSpanElement).classList.add('hamburger__third_active');
     };
     
-    private crossToBurger: classChanger = () => {
+    public crossToBurger: classChanger = () => {
         ((document.querySelector('.hamburger__first')) as HTMLSpanElement).classList.remove('hamburger__first_active');
         ((document.querySelector('.hamburger__second')) as HTMLSpanElement).classList.remove('hamburger__second_active');
         ((document.querySelector('.hamburger__third')) as HTMLSpanElement).classList.remove('hamburger__third_active');

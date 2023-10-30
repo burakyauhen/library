@@ -56,13 +56,12 @@ module.exports = {
                 loader: "html-loader",
             },
             {
-                test: /\.(png|jpg|jpeg|gif)$/i,               
+                test: /\.(png|jpg|jpeg|gif)$/i,  
                 type: 'asset/resource',
                 generator: {
                     // filename: path.join('images', '[name].[contenthash][ext]'),
-                    // filename: 'images/[name][contenthash:8][ext]',
-                    filename: 'images/[name][ext]',
-
+                    filename: 'images/[name][contenthash:8][ext]',
+                    // filename: 'images/[name][ext]',
                 },
             },
             {
