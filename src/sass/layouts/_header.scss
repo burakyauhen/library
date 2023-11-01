@@ -34,6 +34,32 @@
 }
 
 .header__profile {
-    padding: 0 2rem 0 4rem;
+    position: relative;
+    margin: 0 2rem 0 4rem;
     z-index: 1;
+}
+
+.header__drop-menu {
+    @extend %transition;
+    position: absolute;
+    text-align: center;
+    overflow: hidden;
+    right: 0rem;
+    width: 8rem;
+    height: 11.5rem;
+    background-color: $color-light;
+    & p:nth-child(1) {
+        @include font($size: 1.5rem, $height: 2rem, $weight: 700);
+        margin: 0.5rem 0 1.5rem;
+        &::after {
+            @extend %pseudo-drop-menu-underscore;
+        }
+    }
+    & p:nth-child(2), :nth-child(3) {
+        @include font($size: 1.5rem, $height: 2rem);
+        padding-bottom: 1rem;
+    }
+    &_inactive {
+        height: 0;
+    }
 }
