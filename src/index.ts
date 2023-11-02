@@ -3,6 +3,7 @@ import { Burger } from './ts/Burger';
 import { AboutSlider } from './ts/AboutSlider';
 import { FavoriteSlider } from './ts/FavoritesSlider';
 import { DropMenu } from './ts/DropMenu';
+import { Modal } from './ts/Modal';
 
 
 
@@ -30,6 +31,7 @@ window.onload = function() {
     favoriteSlider.implementSlider();
 
 
+    signUpAddClickHandler();
 }
 
 const bodyAddClickHandler = (burger: Burger, dropMenu: DropMenu) => {
@@ -73,3 +75,14 @@ const dropMenuAddClickHandler = (dropMenu: DropMenu, burger: Burger) => {
         }
     });
 }
+
+const signUpAddClickHandler = () => {
+    const signButton = document.querySelector('.card-registry__sign-up') as HTMLButtonElement;
+    signButton.addEventListener('click', () =>  renderModalWindow('Test content for Tools Modal'));
+
+}
+
+const renderModalWindow = (content: string) => {
+    const modal = new Modal('tools-Modal');
+    modal.buildModal(content);
+} 
