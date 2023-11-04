@@ -4,6 +4,7 @@ import { AboutSlider } from './ts/AboutSlider';
 import { FavoriteSlider } from './ts/FavoritesSlider';
 import { DropMenu } from './ts/DropMenu';
 import { Modal } from './ts/Modal';
+import { RegisterModal } from './ts/RegisterModal';
 
 
 
@@ -30,8 +31,9 @@ window.onload = function() {
     const favoriteSlider = new FavoriteSlider();
     favoriteSlider.implementSlider();
 
-
-    signUpAddClickHandler();
+    //registration
+    const registerModal = new RegisterModal('modal-register');
+    registrationAddClickHandler(registerModal, dropMenu);
 }
 
 const bodyAddClickHandler = (burger: Burger, dropMenu: DropMenu) => {
@@ -43,7 +45,7 @@ const bodyAddClickHandler = (burger: Burger, dropMenu: DropMenu) => {
         ) {
             burger.closeBurgerMenu();
         }
-
+        
         if (
             !(event.target as HTMLElement).closest('.header__drop-menu') &&
             !(event.target as HTMLElement).closest('.header__profile')
@@ -61,7 +63,7 @@ const burgerAddClickHandler = (burger: Burger, dropMenu: DropMenu) => {
             burger.openburgerMenu();
             dropMenu.closeDropMenu();
         }
-    })
+    });
 };
 
 const dropMenuAddClickHandler = (dropMenu: DropMenu, burger: Burger) => {
@@ -76,13 +78,15 @@ const dropMenuAddClickHandler = (dropMenu: DropMenu, burger: Burger) => {
     });
 }
 
-const signUpAddClickHandler = () => {
-    const signButton = document.querySelector('.card-registry__sign-up') as HTMLButtonElement;
-    signButton.addEventListener('click', () =>  renderModalWindow('Test content for Tools Modal'));
+const registrationAddClickHandler = (registerModal: RegisterModal, dropMenu: DropMenu) => {
+    const buttonsRegistration: Array<HTMLElement> = Array.from(document.querySelectorAll('.button-registration'));
+    buttonsRegistration.push(document.querySelector('.header__login') as HTMLElement); 
+    buttonsRegistration.push(document.querySelector('.header__register') as HTMLElement); 
+
+    buttonsRegistration.forEach((buttonRegistration) => buttonRegistration.addEventListener('click', () =>  {
+        registerModal.renderModal(buttonRegistration.innerHTML);
+        dropMenu.closeDropMenu();
+    }));
 
 }
 
-const renderModalWindow = (content: string) => {
-    const modal = new Modal('tools-Modal');
-    modal.buildModal(content);
-} 

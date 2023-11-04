@@ -37,9 +37,11 @@
     @include font($size: 1rem, $height: normal, $weight: 700, $spacing: 0.1rem);
     @extend %transition;
     cursor: pointer;
-    padding: 0.85rem 1.7rem;
+    width: 7.5rem;
+    padding: 0.85rem 0;
     background-color: inherit;
     border: 1px solid $color-text;
+    border-radius: 0.2rem;
     color: $color-background-dark;
     &:hover {
         @extend %button-active;
