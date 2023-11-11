@@ -19,3 +19,15 @@
 .ico-facebook {
     @include ico($url: url('./img/icons/facebook.svg'), $size: contain, $width: 2.4rem);
 }
+
+.ico-visits {
+    @include ico($url: url('./img/icons/visits.svg'), $size: contain, $width: 2rem);
+}
+
+.ico-bonuses {
+    @include ico($url: url('./img/icons/bonuses.svg'), $size: contain, $width: 2rem);
+}
+
+.ico-books {
+    @include ico($url: url('./img/icons/books.svg'), $size: contain, $width: 2rem);
+}

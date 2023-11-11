@@ -39,6 +39,19 @@
     z-index: 1;
 }
 
+.header__initials {
+    @include font($size: 1.5rem, $height: 2rem);
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    color: $color-active;
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 1.4rem;
+
+    background-color: $color-light;
+}
+
 .header__drop-menu {
     @extend %transition;
     position: absolute;

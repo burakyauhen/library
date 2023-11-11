@@ -22,13 +22,17 @@
           </ul>
         </nav>
         <span class="header__profile">
-          <span class="ico ico-profile"></span>
+          <div class="header__user-icon">
+            <span class="ico ico-profile" data-state="unregistered"></span>
+            <span class="header__initials hidden" title='' data-state="registered">EV</span>
+          </div>
+          
           <div class="header__drop-menu header__drop-menu_inactive">
             <p>Profile</p>
-            <p class="header__login">Log in</p>
-            <p class="header__register">Register</p>
-            <!-- <p class="header__my-profile">My profile</p>
-            <p class="header__logout">Log Out</p> -->
+            <p class="header__login" data-register="login" data-state="unregistered">Log in</p>
+            <p class="header__register" data-register="register" data-state="unregistered">Register</p>
+            <p class="header__my-profile hidden" data-state="registered">My profile</p>
+            <p class="header__logout hidden" data-state="registered">Log Out</p>
           </div>
         </span>
         <span class="header__hamburger hamburger">
@@ -226,24 +230,55 @@
         <h2 class="library-card__header">Digital Library Cards</h2>
         <div class="library-card__content">
           <div class="library-card__checker">
-            <p class="library-card__checker-name">Find your Library card</p>
+            <p class="library-card__checker-name" data-state="unregistered">Find your Library card</p>
+            <p class="library-card__checker-name hidden" data-state="registered">Your Library card</p>
+
             <form class="check-form library-card__check-form">
               <div class="check-form__date">
                 <p>Brooklyn Public Library</p>
-                <input class="check-form__input" placeholder="Reader's name" type="text" name="reader-name">
-                <input class="check-form__input" placeholder="Card number" type="text" name="card-number">
+                <input class="check-form__input" id='check-form-first-name' placeholder="Reader's name" type="text" name="reader-name">
+                <input class="check-form__input" id='check-form-card-number' placeholder="Card number" type="text" name="card-number">
               </div>
-              <button class="button-form check-form__button" type="submit">Check the card</button>
+              <button class="button-form check-form__button" type="submit" data-state="unregistered">Check the card</button>
+              
+              <div class="check-form__statistic hidden" data-state="registered">
+                <div class="check-form__visits">
+                  <div>Visits</div>
+                  <div class="ico ico-visits"></div>
+                  <div id="check-form-visits">23</div>
+                </div>
+                <div class="check-form__bonuses">
+                  <p>Bonuses</p>
+                  <div class="ico ico-bonuses"></div>
+                  <p>1240</p>
+                </div>
+                <div class="check-form__books">
+                  <p>Books</p>
+                  <div class="ico ico-books"></div>
+                  <p>2</p>
+                </div>
+              </div>
+            
             </form>
           </div>
-          <div class="library-card__registry">
+          <div class="library-card__registry" data-state="unregistered">
             <p class="library-card__registry-name">Get a reader card</p>
             <p class="library-card__registry-description">You will be able to see a reader card after logging into account or you can register a new account</p>
             <div class="library-card__buttons">
-              <button class="button-registration card-registry__sign-up">Sign Up</button>
-              <button class="button-registration card-registry__log-in">Log in</button>
+              <button class="button-registration library-card__sign-up" data-register="register">Sign Up</button>
+              <button class="button-registration library-card__log-in" data-register="login">Log in</button>
             </div>
           </div>
+
+          <div class="library-card__registry hidden" data-state="registered">
+            <p class="library-card__registry-name">Visit your profile</p>
+            <p class="library-card__registry-description">With a digital library card you get free access to the Library’s wide array of digital resources including e-books, databases, educational resources, and more.</p>
+            <div class="library-card__buttons">
+              <button class="button-registration library-card__profile">Profile</button>
+            </div>
+          </div>
+
+
         </div>
       </div>
     </section>

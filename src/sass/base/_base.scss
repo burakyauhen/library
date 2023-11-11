@@ -60,3 +60,7 @@ h4 {
         @include font($size: 1rem, $height: 2rem, $weight: 700, $spacing: 0.2rem, $transform: uppercase);
     }
 }
+
+.hidden {
+    display: none !important;
+}

@@ -50,6 +50,7 @@
     }
 }
 
+
 .library-card__registry-name {
     @extend %font-add;
     @include font($size: 3rem, $height: normal, $spacing: 0.06rem);
@@ -77,11 +78,7 @@
     }
 }
 
-.library-card__buttons {
-    // text-align: right;
-}
-
-.card-registry__sign-up {
+.library-card__sign-up {
     margin-right: 1.5rem;
 }
 

@@ -3,13 +3,14 @@ import { Burger } from './ts/Burger';
 import { AboutSlider } from './ts/AboutSlider';
 import { FavoriteSlider } from './ts/FavoritesSlider';
 import { DropMenu } from './ts/DropMenu';
-import { Modal } from './ts/Modal';
 import { RegisterModal } from './ts/RegisterModal';
 
-
+export enum RegistrationType {register="register", login="login"}
 
 window.onload = function() {
     console.log('page has been loaded');
+
+
 
     //burger, dropMenu
     const burger = new Burger();
@@ -67,7 +68,7 @@ const burgerAddClickHandler = (burger: Burger, dropMenu: DropMenu) => {
 };
 
 const dropMenuAddClickHandler = (dropMenu: DropMenu, burger: Burger) => {
-    const icoProfile = document.querySelector('.ico-profile') as HTMLSpanElement;
+    const icoProfile = document.querySelector('.header__user-icon') as HTMLElement;
     icoProfile.addEventListener('click', () => {
         if (dropMenu.headerDropMenu.classList.contains('header__drop-menu_inactive')) {
            dropMenu.openDropMenu();
@@ -78,15 +79,17 @@ const dropMenuAddClickHandler = (dropMenu: DropMenu, burger: Burger) => {
     });
 }
 
-const registrationAddClickHandler = (registerModal: RegisterModal, dropMenu: DropMenu) => {
-    const buttonsRegistration: Array<HTMLElement> = Array.from(document.querySelectorAll('.button-registration'));
-    buttonsRegistration.push(document.querySelector('.header__login') as HTMLElement); 
-    buttonsRegistration.push(document.querySelector('.header__register') as HTMLElement); 
+const registrationAddClickHandler = (registerModal: RegisterModal, dropMenu: DropMenu) => { 
+    const registerButtons: Array<HTMLButtonElement> = Array.from(document.querySelectorAll('[data-register]'));
 
-    buttonsRegistration.forEach((buttonRegistration) => buttonRegistration.addEventListener('click', () =>  {
-        registerModal.renderModal(buttonRegistration.innerHTML);
+    registerButtons.forEach((registerButton) => registerButton.addEventListener('click', () => {
+        if (registerButton.dataset.register === 'register') {
+            registerModal.renderModal(RegistrationType.register);
+        }
+        if (registerButton.dataset.register === 'login') {
+            registerModal.renderModal(RegistrationType.login);
+        }
         dropMenu.closeDropMenu();
     }));
-
 }
 

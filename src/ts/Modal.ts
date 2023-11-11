@@ -23,14 +23,13 @@ class Modal {
 
         this.appendModalElements();
 
-        // Bind Events
-        this.bindEvents();
-
-        // Open Modal
         this.openModal();
+
+        this.addCloseEventHandlers();
+
     }
 
-    protected setContent(content: string | HTMLDivElement) {
+    private setContent(content: string | HTMLDivElement) {
         if (typeof content === 'string') {
             this.modalContent.innerHTML = content;
         } else {
@@ -39,28 +38,29 @@ class Modal {
         }
     }
 
-    protected appendModalElements() {
+    private appendModalElements() {
         this.modal.append(this.modalContent);
         this.overlay.append(this.modal);
     }
 
-    protected bindEvents() {
-        this.overlay.addEventListener('click', this.closeModal);
+    private addCloseEventHandlers() {
+        (document.querySelector('.overlay') as HTMLElement).addEventListener('click', (e: Event) => {
+            const event = e.target as HTMLElement;
+            if(event.classList.contains('overlay') || event.classList.contains('modal__close-icon')) {
+                this.closeModal();
+            }
+        });
     }
 
-    protected openModal() {
+    private openModal() {
         document.body.append(this.overlay);
     }
 
-    protected closeModal(e: Event) {
-        const classes = (e.target as HTMLElement).classList;
-        if(classes.contains('overlay') || classes.contains('modal__close-icon')) {
-            if ((document.querySelector('.overlay') as HTMLElement)) {
-                (document.querySelector('.overlay') as HTMLElement).remove();
-            }
+    protected closeModal() {
+        if ((document.querySelector('.overlay') as HTMLElement)) {
+            (document.querySelector('.overlay') as HTMLElement).remove();
         }
     }
-
 }
 
 export { Modal };
