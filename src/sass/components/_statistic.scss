@@ -1,0 +1,41 @@
+.statistic {
+    display: flex;
+    justify-content: center;
+    gap: 3.5rem;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 1rem;
+    &_inactive {
+        display: none;
+    }
+    &_modified {
+        justify-content: flex-start;
+        gap: 2rem;
+        margin-bottom: 1.2rem;
+    }
+}
+
+.statistic__visits,
+.statistic__bonuses,
+.statistic__books {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    &_modified {
+        gap: 1rem;
+    }
+}
+
+.statistic__headers {
+    @include font($size: 1rem, $height: 2rem, $spacing: 0.2px, $transform: capitalize);  
+    &_modified {
+        @include font($size: 2rem, $height: 2rem, $spacing: 0.4px, $transform: capitalize);  
+    }
+}
+
+.statistic__count-visits,
+.statistic__count-bonuses,
+.statistic__count-books {
+    @include font($size: 1rem, $height: 2rem, $spacing: 0.2px, $transform: capitalize);  
+}

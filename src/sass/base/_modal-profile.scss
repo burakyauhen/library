@@ -1,0 +1,97 @@
+.modal-profile {
+    max-width: 60rem;
+    width: 100%;
+    height: 40rem;
+}
+
+.modal-profile__close-icon {
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    line-height: 0;
+    cursor: pointer;
+    svg {
+        pointer-events: none;
+    }
+}
+
+.modal-profile__content {
+    display: flex;
+    height: 100%;
+}
+
+.modal-profile__left-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center; 
+    padding: 1rem;
+    gap: 1.5rem;
+    align-items: center;
+    width: calc((170 / 600)* 100%) ; 
+    background-color: black;
+}
+
+.modal-profile__initials {
+    @include font($size: 2rem, $transform: uppercase);
+    padding: 3rem 0;
+    color: $color-active;
+    max-width: 8rem;
+    width: 100%;
+    height: 8rem;
+    background-color: $color-light;
+}
+
+.modal-profile__full-name {
+    @include font($size: 2rem, $transform: capitalize);
+    background-color: $color-light;
+    color: $color-text;
+    padding: 0.5rem 1.5rem;
+    @include media-tablet {
+        font-size: 1.5rem;
+    }
+}
+
+.modal-profile__right-column {
+    padding: 4rem 2rem;
+    background-color: white;
+}
+
+.modal-profile__header {
+    @extend %font-add;
+    @include font($size: 4rem, $height: 2rem, $spacing: 0.8px, $transform: uppercase);
+    margin: 0;
+    padding-bottom: 4rem;
+    @include media-tablet {
+        font-size: 3rem;
+    }
+}
+
+.modal-profile__books {
+    @include font($size: 2.5rem, $height: 2rem);
+    color: $color-background-dark;
+    margin-bottom: 3rem;
+    @include media-tablet {
+        font-size: 2remx;
+    }
+}
+
+.modal-profile__list{
+    padding: 0 0 2rem 3.1rem;
+    & li {
+        @include font($size: 2rem, $spacing: 2px, $transform: capitalize);
+        margin-bottom: 1rem;
+        @include media-tablet {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.modal-profile__card {
+    color: $color-background-dark
+}
+
+.modal-profile__card-number {
+    color: $color-active;
+    padding: 0 1rem;
+}

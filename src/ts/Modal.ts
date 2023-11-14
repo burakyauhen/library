@@ -45,8 +45,8 @@ class Modal {
 
     private addCloseEventHandlers() {
         (document.querySelector('.overlay') as HTMLElement).addEventListener('click', (e: Event) => {
-            const event = e.target as HTMLElement;
-            if(event.classList.contains('overlay') || event.classList.contains('modal__close-icon')) {
+            const eTarget = e.target as HTMLElement;
+            if(eTarget.classList.contains('overlay') || eTarget.classList.contains('close-icon')) {
                 this.closeModal();
             }
         });

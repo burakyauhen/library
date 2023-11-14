@@ -4,30 +4,34 @@
 }
 
 .ico-profile {
-    @include ico($url: url("./img/icons/icon_profile.svg"), $size: contain, $width: 2.8rem);
+    @include ico($url: url("./img/icons/icon_profile.svg"), $width: 2.8rem);
     vertical-align: middle;
 }
 
 .ico-twitter {
-    @include ico($url: url("./img/icons/twitter.svg"), $size: contain, $width: 2.4rem);
+    @include ico($url: url("./img/icons/twitter.svg"), $width: 2.4rem);
 }
 
 .ico-instagram {
-    @include ico($url: url('./img/icons/instagram.svg'), $size: contain, $width: 2.4rem);
+    @include ico($url: url('./img/icons/instagram.svg'), $width: 2.4rem);
 }
 
 .ico-facebook {
-    @include ico($url: url('./img/icons/facebook.svg'), $size: contain, $width: 2.4rem);
+    @include ico($url: url('./img/icons/facebook.svg'), $width: 2.4rem);
 }
 
 .ico-visits {
-    @include ico($url: url('./img/icons/visits.svg'), $size: contain, $width: 2rem);
+    @include ico($url: url('./img/icons/visits.svg'), $width: 2rem);
 }
 
 .ico-bonuses {
-    @include ico($url: url('./img/icons/bonuses.svg'), $size: contain, $width: 2rem);
+    @include ico($url: url('./img/icons/bonuses.svg'), $width: 2rem);
 }
 
 .ico-books {
-    @include ico($url: url('./img/icons/books.svg'), $size: contain, $width: 2rem);
+    @include ico($url: url('./img/icons/books.svg'), $width: 2rem);
+}
+
+.ico-copy {
+    @include ico($url: url('./img/icons/icon_copy.svg'), $width: 1.3rem);
 }

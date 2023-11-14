@@ -1,5 +1,6 @@
 import { Modal } from "./Modal";
 import { RegistrationType } from "..";
+import { SourceCode } from "eslint";
 
 interface User {
     firstName: string;
@@ -11,22 +12,29 @@ interface User {
 }
 
 class RegisterModal extends Modal {
-    users: Array<User> = [];
+    users: Array<User>;
+    user: User | null = null;
     constructor(classes: string) {
         super(classes);
+        this.users = this.getUsers();
+    }
+
+    private getUsers() {
+        let users: Array<User> =[];
+        const json = localStorage.getItem('users');
+        (json) ? users = JSON.parse(json) : users = [];
+        return users;
     }
 
     public renderModal(registrationType: RegistrationType) {
-        const modalRegisterContent = this.getMenu(registrationType);
+        const modalRegisterContent = this.getContent(registrationType);
         super.buildModal(modalRegisterContent);
-
-        const json = localStorage.getItem('users');
-        (json) ? this.users = JSON.parse(json) : this.users = [];
 
         if (registrationType === RegistrationType.register) this.addValidation();
 
         this.modalRegisterChangerAddClickHandler();
         this.modalRegisterButtonAddClickHandler(registrationType);
+        this.modalLogOutButtonAddClickHandler(); 
     }
 
     private addValidation() {
@@ -37,8 +45,8 @@ class RegisterModal extends Modal {
         });
     }
 
-    private getMenu(registrationType: RegistrationType) {
-        const regiserMenu = `<span class="modal__close-icon"><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 16.8507L17 2.00003" stroke="#0C0C0E" stroke-width="3"/><path d="M2 2.14926L17 17" stroke="#0C0C0E" stroke-width="3"/></svg></span>
+    private getContent(registrationType: RegistrationType) {
+        const regiserMenu = `<span class="close-icon modal-register__close-icon"><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 16.8507L17 2.00003" stroke="#0C0C0E" stroke-width="3"/><path d="M2 2.14926L17 17" stroke="#0C0C0E" stroke-width="3"/></svg></span>
         <div class="modal-register__content">
             <h5 class="modal-register__header">register</h5>
             <form action="#" class="modal-register__form">
@@ -55,7 +63,7 @@ class RegisterModal extends Modal {
             </form>
         </div>`;
 
-        const loginMenu = `<span class="modal__close-icon"><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 16.8507L17 2.00003" stroke="#0C0C0E" stroke-width="3"/><path d="M2 2.14926L17 17" stroke="#0C0C0E" stroke-width="3"/></svg></span>
+        const loginMenu = `<span class="close-icon modal-register__close-icon"><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 16.8507L17 2.00003" stroke="#0C0C0E" stroke-width="3"/><path d="M2 2.14926L17 17" stroke="#0C0C0E" stroke-width="3"/></svg></span>
         <div class="modal-register__content">
             <h5 class="modal-register__header">login</h5>
             <form action="#" class="modal-register__form">
@@ -94,16 +102,24 @@ class RegisterModal extends Modal {
             if (registerType === RegistrationType.login) {
                 this.loginUser(form);
             }
-            this.closeModal();
-        })
+        });
+    }
+
+    private modalLogOutButtonAddClickHandler() {
+        const logOut = document.querySelector('.header__logout') as HTMLElement;
+        logOut.addEventListener('click', () => {
+            this.makePageUnregistered();
+            this.user = null;
+        });
     }
 
     private registerUser(form: HTMLFormElement) {
-        const user: User = this.getUserData(form);
+        this.user = this.getUserData(form);
 
-        if (this.getIndexOfUserInLocalStorage(user.email) === -1) {
-            this.addUserToLocalStorage(user);
-            this.makePageRegistred(user);
+        if (this.getIndexOfUserInLocalStorage(this.user.email) === -1) {
+            this.addUserToLocalStorage(this.user);
+            this.makePageRegistred(this.user);
+            this.closeModal();
         }
     }
 
@@ -111,11 +127,14 @@ class RegisterModal extends Modal {
         const emailOrCardNumber = (form.querySelector('#email-number') as HTMLInputElement).value;
         const password = (form.querySelector('#password') as HTMLInputElement).value;
         const userNumber = this.getIndexOfUserInLocalStorage(emailOrCardNumber, password);
-        
+       console.log(emailOrCardNumber);
+       console.log(userNumber);
         if (userNumber !== -1) {
-            const user = this.users[userNumber];
-            user.visits++;
-            this.makePageRegistred(user);
+            this.user = this.users[userNumber];
+            this.user.visits++;
+            this.updateUserInLocalStorage(this.user);
+            this.makePageRegistred(this.user);
+            this.closeModal();
         }
     }
 
@@ -127,9 +146,11 @@ class RegisterModal extends Modal {
             tag.classList.remove('hidden');
         });
 
+        this.fillStatistic(user);
         (document.querySelector('#check-form-first-name') as HTMLInputElement).placeholder = `${user.firstName} ${user.lastName}`;
         (document.querySelector('#check-form-card-number') as HTMLInputElement).placeholder = user.cardNumber;
-        (document.querySelector('#check-form-visits') as HTMLDivElement).textContent = `${user.visits}`
+        
+        // (document.querySelector('.statistic__count-visits') as HTMLDivElement).textContent = `${user.visits}`
         const headerInitials = document.querySelector('.header__initials') as HTMLSpanElement;
         headerInitials.title = `${user.firstName} ${user.lastName}`;
         headerInitials.textContent = `${user.firstName.slice(0, 1)}${user.lastName.slice(0, 1)}`;
@@ -141,9 +162,15 @@ class RegisterModal extends Modal {
         });
         (document.querySelectorAll('[data-state=registered]')).forEach((tag) => {
             tag.classList.add('hidden');
-        })  
+        });
+
+        (document.querySelector('#check-form-first-name') as HTMLInputElement).placeholder = "Reader's name";
+        (document.querySelector('#check-form-card-number') as HTMLInputElement).placeholder = "Card number";
+        const headerInitials = document.querySelector('.header__initials') as HTMLSpanElement;
+        headerInitials.title = ``;
+        headerInitials.textContent = ``;
     }
-    
+
     private getUserData(form: HTMLFormElement) {
         const user: User = {
             firstName: (form.querySelector('#first-name') as HTMLInputElement).value,
@@ -166,7 +193,13 @@ class RegisterModal extends Modal {
         localStorage.setItem('users', JSON.stringify(this.users));
     } 
 
-    private getIndexOfUserInLocalStorage(emailOrCardNumber: string, password?: string): number {
+    private updateUserInLocalStorage(user: User) {
+        const userNumber = this.getIndexOfUserInLocalStorage(user.email);
+        this.users[userNumber] = user;
+        localStorage.setItem('users', JSON.stringify(this.users));
+    }
+
+    public getIndexOfUserInLocalStorage(emailOrCardNumber: string, password?: string): number {
         let index: number;
         
         if (password) {
@@ -176,7 +209,23 @@ class RegisterModal extends Modal {
         }
 
         return index;
-    } 
+    }
+
+    public showStatistic(user: User) {
+        const statistic = document.querySelector('.check-form__statistic') as HTMLElement;
+        statistic.classList.remove('hidden');
+        this.fillStatistic(user);
+
+        setTimeout(() => {
+            statistic.classList.add('hidden');
+            (document.querySelector('#check-form-first-name') as HTMLInputElement).value = "";
+            (document.querySelector('#check-form-card-number') as HTMLInputElement).value = "";
+        }, 10000);
+    }
+
+    private fillStatistic(user: User) {
+        (document.querySelector('.statistic__count-visits') as HTMLDivElement).textContent = `${user.visits}`
+    }
 }
 
-export { RegisterModal };
+export { RegisterModal, User };

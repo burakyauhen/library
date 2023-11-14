@@ -26,7 +26,6 @@
             <span class="ico ico-profile" data-state="unregistered"></span>
             <span class="header__initials hidden" title='' data-state="registered">EV</span>
           </div>
-          
           <div class="header__drop-menu header__drop-menu_inactive">
             <p>Profile</p>
             <p class="header__login" data-register="login" data-state="unregistered">Log in</p>
@@ -40,7 +39,6 @@
           <span class="hamburger__second"></span>
           <span class="hamburger__third"></span>
         </span>
-
       </div>
     </div>
   </header>
@@ -61,7 +59,6 @@
             <div></div>
             <div></div>
           </div>
-          
           <div class="about__menu">
             <div class="about__slider">
               <div class="about__strip">
@@ -72,7 +69,6 @@
                 <img class="about__image" src="./img/about/about_iamge_5.png" alt="building with columns"> 
               </div>
             </div>
-            
             <div class="about__signs">
               <span class="about__circle about__circle_active"></span>
               <span class="about__circle"></span>
@@ -85,7 +81,6 @@
             <div></div>
             <div></div>
           </div>
-       
         </div>
       </div>
     </section>
@@ -232,33 +227,32 @@
           <div class="library-card__checker">
             <p class="library-card__checker-name" data-state="unregistered">Find your Library card</p>
             <p class="library-card__checker-name hidden" data-state="registered">Your Library card</p>
-
             <form class="check-form library-card__check-form">
               <div class="check-form__date">
                 <p>Brooklyn Public Library</p>
+
                 <input class="check-form__input" id='check-form-first-name' placeholder="Reader's name" type="text" name="reader-name">
                 <input class="check-form__input" id='check-form-card-number' placeholder="Card number" type="text" name="card-number">
-              </div>
-              <button class="button-form check-form__button" type="submit" data-state="unregistered">Check the card</button>
               
-              <div class="check-form__statistic hidden" data-state="registered">
-                <div class="check-form__visits">
-                  <div>Visits</div>
+              </div>
+              <button class="button-form check-form__button" data-state="unregistered">Check the card</button>
+              <div class="check-form__statistic statistic hidden" data-state="registered">
+                <div class="statistic__visits">
+                  <div class="statistic__headers">Visits</div>
                   <div class="ico ico-visits"></div>
-                  <div id="check-form-visits">23</div>
+                  <div class="statistic__count-visits"></div>
                 </div>
-                <div class="check-form__bonuses">
-                  <p>Bonuses</p>
+                <div class="statistic__bonuses">
+                  <p class="statistic__headers">Bonuses</p>
                   <div class="ico ico-bonuses"></div>
-                  <p>1240</p>
+                  <p class="statistic__count-bonuses">1240</p>
                 </div>
-                <div class="check-form__books">
-                  <p>Books</p>
+                <div class="statistic__books">
+                  <p class="statistic__headers">Books</p>
                   <div class="ico ico-books"></div>
-                  <p>2</p>
+                  <p class="statistic__count-books">2</p>
                 </div>
               </div>
-            
             </form>
           </div>
           <div class="library-card__registry" data-state="unregistered">
@@ -269,7 +263,6 @@
               <button class="button-registration library-card__log-in" data-register="login">Log in</button>
             </div>
           </div>
-
           <div class="library-card__registry hidden" data-state="registered">
             <p class="library-card__registry-name">Visit your profile</p>
             <p class="library-card__registry-description">With a digital library card you get free access to the Library’s wide array of digital resources including e-books, databases, educational resources, and more.</p>
@@ -277,8 +270,6 @@
               <button class="button-registration library-card__profile">Profile</button>
             </div>
           </div>
-
-
         </div>
       </div>
     </section>

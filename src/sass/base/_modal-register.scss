@@ -1,0 +1,52 @@
+.modal-register__close-icon {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    line-height: 0;
+    cursor: pointer;
+    svg {
+        pointer-events: none;
+    }
+}
+
+.modal-register {
+    padding: 2rem 2.5rem;
+}
+
+.modal-register__form p {
+    line-height: 2.3rem;
+}
+
+.modal-register__header {
+    @extend %font-add;
+    @include font($size: 2rem, $spacing: 0.4px, $transform: uppercase);
+    margin: 0 0 2rem;
+    text-align: center;
+}
+
+.modal-register__label {
+    @include font($size: 1.5rem, $height: 2rem, $spacing: 0.3px);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.modal-register__input {
+    display: block;
+    margin-bottom: 1rem;
+    width: 20rem;
+    height: 2rem;
+    border: 1px solid $color-active;
+}
+
+.modal-register__qestion {
+    @include font($size: 1rem, $height: normal);
+    text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.16);
+}
+
+.modal-register__changer {
+    @include font($size: 1rem, $height: normal, $weight: 700, $spacing: 1px);
+    cursor: pointer;
+    text-decoration: underline;
+    color: $color-background-dark;
+    padding-left: 1rem;
+}

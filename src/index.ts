@@ -3,14 +3,13 @@ import { Burger } from './ts/Burger';
 import { AboutSlider } from './ts/AboutSlider';
 import { FavoriteSlider } from './ts/FavoritesSlider';
 import { DropMenu } from './ts/DropMenu';
-import { RegisterModal } from './ts/RegisterModal';
+import { RegisterModal, User } from './ts/RegisterModal';
+// import { ProfileModal } from './ts/ProfileModals';
 
 export enum RegistrationType {register="register", login="login"}
 
 window.onload = function() {
     console.log('page has been loaded');
-
-
 
     //burger, dropMenu
     const burger = new Burger();
@@ -35,6 +34,10 @@ window.onload = function() {
     //registration
     const registerModal = new RegisterModal('modal-register');
     registrationAddClickHandler(registerModal, dropMenu);
+    checkFormAddClickHandler(registerModal);
+
+    //My Profile menu
+   
 }
 
 const bodyAddClickHandler = (burger: Burger, dropMenu: DropMenu) => {
@@ -92,4 +95,25 @@ const registrationAddClickHandler = (registerModal: RegisterModal, dropMenu: Dro
         dropMenu.closeDropMenu();
     }));
 }
+
+
+
+const checkFormAddClickHandler = (regiserMenu: RegisterModal) => {
+    (document.querySelector('.check-form__button') as HTMLElement).addEventListener('click', (e: Event) => {
+        e.preventDefault();
+        const fullName = (document.querySelector('#check-form-first-name') as HTMLInputElement).value;
+        const cardNumber = (document.querySelector('#check-form-card-number') as HTMLInputElement).value;
+
+        const userIndex = regiserMenu.getIndexOfUserInLocalStorage(cardNumber);
+        let user: User | null = null;
+        if (userIndex !== -1) {
+            user = regiserMenu.users[userIndex];
+        }
+
+        if  (user && (fullName === `${user.firstName} ${user.lastName}`)) {
+            regiserMenu.showStatistic(user);
+        }
+    });
+}
+
 
