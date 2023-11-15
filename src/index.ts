@@ -4,7 +4,7 @@ import { AboutSlider } from './ts/AboutSlider';
 import { FavoriteSlider } from './ts/FavoritesSlider';
 import { DropMenu } from './ts/DropMenu';
 import { RegisterModal, User } from './ts/RegisterModal';
-// import { ProfileModal } from './ts/ProfileModals';
+import { ProfileModal } from './ts/ProfileModals';
 
 export enum RegistrationType {register="register", login="login"}
 
@@ -37,7 +37,8 @@ window.onload = function() {
     checkFormAddClickHandler(registerModal);
 
     //My Profile menu
-   
+    const profileModal = new ProfileModal('modal-profile');
+    profileAddClickHandler(profileModal, registerModal, dropMenu);
 }
 
 const bodyAddClickHandler = (burger: Burger, dropMenu: DropMenu) => {
@@ -96,8 +97,6 @@ const registrationAddClickHandler = (registerModal: RegisterModal, dropMenu: Dro
     }));
 }
 
-
-
 const checkFormAddClickHandler = (regiserMenu: RegisterModal) => {
     (document.querySelector('.check-form__button') as HTMLElement).addEventListener('click', (e: Event) => {
         e.preventDefault();
@@ -115,5 +114,16 @@ const checkFormAddClickHandler = (regiserMenu: RegisterModal) => {
         }
     });
 }
+
+const profileAddClickHandler = (profileModal: ProfileModal, registerModal: RegisterModal, dropMenu: DropMenu) => {
+    document.querySelectorAll('[data-profile]').forEach((tag) => {
+        tag.addEventListener('click', () => {
+            profileModal.renderModal(registerModal.user);
+            dropMenu.closeDropMenu();
+        });
+    });
+}
+
+
 
 

@@ -27,10 +27,10 @@
             <span class="header__initials hidden" title='' data-state="registered">EV</span>
           </div>
           <div class="header__drop-menu header__drop-menu_inactive">
-            <p>Profile</p>
+            <p class="header__profile-number">Profile</p>
             <p class="header__login" data-register="login" data-state="unregistered">Log in</p>
             <p class="header__register" data-register="register" data-state="unregistered">Register</p>
-            <p class="header__my-profile hidden" data-state="registered">My profile</p>
+            <p class="header__my-profile hidden" data-profile data-state="registered">My profile</p>
             <p class="header__logout hidden" data-state="registered">Log Out</p>
           </div>
         </span>
@@ -230,10 +230,8 @@
             <form class="check-form library-card__check-form">
               <div class="check-form__date">
                 <p>Brooklyn Public Library</p>
-
                 <input class="check-form__input" id='check-form-first-name' placeholder="Reader's name" type="text" name="reader-name">
                 <input class="check-form__input" id='check-form-card-number' placeholder="Card number" type="text" name="card-number">
-              
               </div>
               <button class="button-form check-form__button" data-state="unregistered">Check the card</button>
               <div class="check-form__statistic statistic hidden" data-state="registered">
@@ -267,7 +265,7 @@
             <p class="library-card__registry-name">Visit your profile</p>
             <p class="library-card__registry-description">With a digital library card you get free access to the Library’s wide array of digital resources including e-books, databases, educational resources, and more.</p>
             <div class="library-card__buttons">
-              <button class="button-registration library-card__profile">Profile</button>
+              <button class="button-registration library-card__profile" data-profile>Profile</button>
             </div>
           </div>
         </div>

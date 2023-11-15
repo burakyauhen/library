@@ -1,6 +1,5 @@
 import { Modal } from "./Modal";
 import { RegistrationType } from "..";
-import { SourceCode } from "eslint";
 
 interface User {
     firstName: string;
@@ -149,8 +148,8 @@ class RegisterModal extends Modal {
         this.fillStatistic(user);
         (document.querySelector('#check-form-first-name') as HTMLInputElement).placeholder = `${user.firstName} ${user.lastName}`;
         (document.querySelector('#check-form-card-number') as HTMLInputElement).placeholder = user.cardNumber;
-        
-        // (document.querySelector('.statistic__count-visits') as HTMLDivElement).textContent = `${user.visits}`
+        (document.querySelector('.header__profile-number') as HTMLElement).textContent = `${user.cardNumber}`; 
+
         const headerInitials = document.querySelector('.header__initials') as HTMLSpanElement;
         headerInitials.title = `${user.firstName} ${user.lastName}`;
         headerInitials.textContent = `${user.firstName.slice(0, 1)}${user.lastName.slice(0, 1)}`;
@@ -166,6 +165,8 @@ class RegisterModal extends Modal {
 
         (document.querySelector('#check-form-first-name') as HTMLInputElement).placeholder = "Reader's name";
         (document.querySelector('#check-form-card-number') as HTMLInputElement).placeholder = "Card number";
+        (document.querySelector('.header__profile-number') as HTMLElement).textContent = 'Profile'; 
+
         const headerInitials = document.querySelector('.header__initials') as HTMLSpanElement;
         headerInitials.title = ``;
         headerInitials.textContent = ``;
