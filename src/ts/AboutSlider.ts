@@ -14,12 +14,14 @@ class AboutSlider {
     }
 
     private addClickHandlerAboutSigns = () => {
-        (document.querySelector('.about__signs') as HTMLDivElement).addEventListener('click', (event) => {
-            this.clickedCircle = this.getNumberOfClickedCircle(event.target as HTMLDivElement);
-            this.countAboutStripLeft();
-            this.reloadSlider();
-            this.setArrowCircleCondition();
-        })
+        (document.querySelector('.about__signs') as HTMLDivElement).addEventListener('click', (e: Event) => {
+            if ((e.target as HTMLElement).classList.contains('about__circle')) {
+                this.clickedCircle = this.getNumberOfClickedCircle(e.target as HTMLDivElement);
+                this.countAboutStripLeft();
+                this.reloadSlider();
+                this.setArrowCircleCondition();
+            }
+        });
     }
 
     private addClickHandlerLeftArrow = () => {

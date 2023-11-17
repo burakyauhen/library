@@ -8,14 +8,17 @@ interface User {
     password: string;
     cardNumber: string;
     visits: number;
+    rentedBooks: Array<string>;
 }
 
 class RegisterModal extends Modal {
     users: Array<User>;
     user: User | null = null;
-    constructor(classes: string) {
+    condition: string;
+    constructor(classes: string,) {
         super(classes);
         this.users = this.getUsers();
+        this.condition = 'unregistered'
     }
 
     private getUsers() {
@@ -45,7 +48,7 @@ class RegisterModal extends Modal {
     }
 
     private getContent(registrationType: RegistrationType) {
-        const regiserMenu = `<span class="close-icon modal-register__close-icon"><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 16.8507L17 2.00003" stroke="#0C0C0E" stroke-width="3"/><path d="M2 2.14926L17 17" stroke="#0C0C0E" stroke-width="3"/></svg></span>
+        const registerMenu = `<span class="close-icon modal-register__close-icon"><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 16.8507L17 2.00003" stroke="#0C0C0E" stroke-width="3"/><path d="M2 2.14926L17 17" stroke="#0C0C0E" stroke-width="3"/></svg></span>
         <div class="modal-register__content">
             <h5 class="modal-register__header">register</h5>
             <form action="#" class="modal-register__form">
@@ -75,7 +78,7 @@ class RegisterModal extends Modal {
             </form>
         </div>`;
 
-        return (registrationType === RegistrationType.register) ? regiserMenu :loginMenu;
+        return (registrationType === RegistrationType.register) ? registerMenu :loginMenu;
     }
 
     private modalRegisterChangerAddClickHandler() {
@@ -126,8 +129,6 @@ class RegisterModal extends Modal {
         const emailOrCardNumber = (form.querySelector('#email-number') as HTMLInputElement).value;
         const password = (form.querySelector('#password') as HTMLInputElement).value;
         const userNumber = this.getIndexOfUserInLocalStorage(emailOrCardNumber, password);
-       console.log(emailOrCardNumber);
-       console.log(userNumber);
         if (userNumber !== -1) {
             this.user = this.users[userNumber];
             this.user.visits++;
@@ -138,6 +139,7 @@ class RegisterModal extends Modal {
     }
 
     private makePageRegistred(user: User) {
+        this.condition = 'registered';
         (document.querySelectorAll('[data-state=unregistered]')).forEach((tag) => {
             tag.classList.add('hidden');
         });
@@ -149,6 +151,8 @@ class RegisterModal extends Modal {
         (document.querySelector('#check-form-first-name') as HTMLInputElement).placeholder = `${user.firstName} ${user.lastName}`;
         (document.querySelector('#check-form-card-number') as HTMLInputElement).placeholder = user.cardNumber;
         (document.querySelector('.header__profile-number') as HTMLElement).textContent = `${user.cardNumber}`; 
+        (document.querySelector('.statistic__count-books') as HTMLElement).textContent = `${user.rentedBooks.length}`; 
+
 
         const headerInitials = document.querySelector('.header__initials') as HTMLSpanElement;
         headerInitials.title = `${user.firstName} ${user.lastName}`;
@@ -156,6 +160,7 @@ class RegisterModal extends Modal {
     }
 
     private makePageUnregistered() {
+        this.condition = 'unregistered';
         (document.querySelectorAll('[data-state=unregistered]')).forEach((tag) => {
             tag.classList.remove('hidden');
         });
@@ -180,6 +185,7 @@ class RegisterModal extends Modal {
             password: (form.querySelector('#password') as HTMLInputElement).value,
             cardNumber: getRandomHex(9),
             visits: 1,
+            rentedBooks: [],
         };
 
         function getRandomHex(length: number) {
@@ -194,7 +200,7 @@ class RegisterModal extends Modal {
         localStorage.setItem('users', JSON.stringify(this.users));
     } 
 
-    private updateUserInLocalStorage(user: User) {
+    public updateUserInLocalStorage(user: User) {
         const userNumber = this.getIndexOfUserInLocalStorage(user.email);
         this.users[userNumber] = user;
         localStorage.setItem('users', JSON.stringify(this.users));

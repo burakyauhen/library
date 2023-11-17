@@ -1,0 +1,55 @@
+.modal-payment {
+    max-width: 65rem;
+    width: 100%;
+}
+
+.modal-payment__close-icon {
+    position: absolute;
+    color: $color-light;
+    top: 2.5rem;
+    right: 2.5rem;
+    line-height: 0;
+    cursor: pointer;
+    svg {
+        pointer-events: none;
+    }
+}
+
+.modal-payment__header {
+    @extend %font-add;
+    @include font($size: 4rem, $height: 2rem, $spacing: 0.8px, $transform: uppercase);
+    text-align: center;
+    margin: 0;
+    padding: 2rem 0 2rem;
+    background-color: $color-background-dark;
+    color: $color-light;   
+    @include media-tablet {
+        font-size: 3rem;
+    }
+}
+
+.modal-payment__data {
+    display: flex;
+    padding: 3rem 4rem 4rem 4rem;
+    @include media-tablet {
+        padding: 2rem 2rem 2rem 2rem;
+    }
+}
+
+.modal-payment__left-column {
+    max-width: 20rem;
+    min-width: 15rem;
+    width: 100%;
+}
+
+.modal-payment__right-column {
+    @include font($size: 1.5rem, $height: 2rem, $spacing: 2px);
+    color: $color-text-add;
+    max-width: 37rem;
+    width: 100%;
+    padding-left: 4rem;
+    @include media-tablet {
+        font-size: 1.2rem;
+        padding-left: 2rem;
+    }
+}

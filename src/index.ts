@@ -4,7 +4,8 @@ import { AboutSlider } from './ts/AboutSlider';
 import { FavoriteSlider } from './ts/FavoritesSlider';
 import { DropMenu } from './ts/DropMenu';
 import { RegisterModal, User } from './ts/RegisterModal';
-import { ProfileModal } from './ts/ProfileModals';
+import { ProfileModal } from './ts/ProfileModal';
+import { PaymentModal } from './ts/PaymentModal';
 
 export enum RegistrationType {register="register", login="login"}
 
@@ -27,18 +28,36 @@ window.onload = function() {
         aboutSlider.reloadSlider();
     });
 
-    //favorites Slider
-    const favoriteSlider = new FavoriteSlider();
-    favoriteSlider.implementSlider();
+    
+
+    
 
     //registration
     const registerModal = new RegisterModal('modal-register');
     registrationAddClickHandler(registerModal, dropMenu);
     checkFormAddClickHandler(registerModal);
 
+    //Payment menu
+    const paymentModal = new PaymentModal('modal-payment', registerModal);
+
+
+    //favorites Slider
+    const favoriteSlider = new FavoriteSlider(paymentModal, registerModal);
+    favoriteSlider.implementSlider();
+    favoriteSlider.buyButtonsAddClickHandler();
+
+
+    
+
+
+    
+
     //My Profile menu
     const profileModal = new ProfileModal('modal-profile');
     profileAddClickHandler(profileModal, registerModal, dropMenu);
+
+    
+
 }
 
 const bodyAddClickHandler = (burger: Burger, dropMenu: DropMenu) => {

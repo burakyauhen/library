@@ -184,7 +184,7 @@ class Book {
         this.imageUrl && 
         (template += `<img class="book-content__image" src="${this.imageUrl}" alt="cover of book">`);
 
-        template += `<button class="button button_disabled">Buy</button>`
+        template += `<button class="button" data-buy-button>Buy</button>`
         bookContent.innerHTML = template;
 
         return bookContent;
